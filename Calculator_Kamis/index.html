@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+</head>
+<body class="bg-subtle-accent">
+
+
+    <!-- eksperimen bootstrap -->
+    <!-- untuk menggunakan bootstrap bisa offline dan online -->
+    <!-- offline harus download dulu data datnya, kalo online panggil link dari websitenya -->
+     <!-- Cari getting started klil intsall dan CDN untuk menginstall online -->
+
+    <!-- <button type="button" class="btn-outline theme-success">Save</button> -->
+
+
+
+    <!-- Container -->
+     <!-- di bootstrap padding nya bukan bottom, left... tapi pake x, y, z -->
+      <!-- untuk margin biasa pake m terus huruf awal dari bottom, left, right, top. contoh mb untuk magin bottom -->
+    <div class="container py-5">
+        <h1 style="font-family:cursive  ;" class="text-center mb-4">KALKULATOR</h1>
+
+       <!-- Konten -->
+        <!-- row digunakan untuk atur grid/ tata letak -->
+
+        <div class="row justify-content-center">
+            <!-- dipilih 12 kolom karna batas maksimal bootstrap -->
+             <!-- md=medium, saat menjalankan di device lain maka layar akan menyesuaikan dengan memanggil kolom 6 (12/2 = 6 kolom. dia ingin dibagi berapa layar), lg:col-4 untuk sesuaikan layar lagi untuk di laptop,pc dan sbg (12/3= 4 kolom, layar terbagi jadi 4 bagian)  -->
+
+            <div class="col-12 md:col-6 lg:col-4">
+                <div class="bg-subtle-info p-3 rounded-5 shadow-lg">
+                    <!-- Layar kalkulator -->
+                     <!-- text-end/center untuk ubah posisi elemen/text mulai menulis dari mana -->
+                    <div class="bg-10 rounded-3 p-3 mb-3 text-end">
+
+                        <!-- muted digunakan untuk buat tulisan redup -->
+                         <!-- ditambhakan id untuk tambahkan riwayat -->
+                        <div id="riwayat" class="fg-muted"></div>
+
+                        <!-- form-control digunakan meluaskan inputan untuk penuhi wadahnya, fs/font size, fw/font weight, value untuk tampilkan nilai apa yang mau ditampilin, readonly digunakan untuk supaya inputan ga bisa di tulis cuma bisa dibaca kecuali menginput lewat button -->
+                         <!-- input ditambahkan id untuk layarnya -->
+                        <input id="layar" class="form-control text-end fs-2 fw-bold" type="text" value="0" readonly>
+                    </div>
+
+                    <!-- Tombol kalkulator -->
+                     <!-- grid/g -->
+                    <div class=" row g-2">
+                        <!-- Baris 1 -->
+
+                        <div class="col-3">
+                            <button onclick="bersihsemua()" type="button" class="btn-solid theme-warning w-100">AC</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="hapus()" type="button" class="btn-solid theme-danger w-100">⌫</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('%')" type="button" class="btn-solid theme-warning w-100">%</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('/')" type="button" class="btn-solid theme-warning w-100">÷</button>
+                        </div>
+
+                        <!-- Baris 2 -->
+                        <div class="col-3">
+                            <!-- cara tambahkan funtion tambahkan tag onclick setelah nulis function javascript  -->
+                            <button onclick="tampilkannilai('7')" type="button" class="btn-outline theme-primary w-100">7</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('8')" type="button" class="btn-solid theme-primary w-100">8</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('9')" type="button" class="btn-subtle theme-primary w-100">9</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('*')" type="button" class="btn-solid theme-warning w-100">×</button>
+                        </div>
+
+                        <!-- Baris 3 -->
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('4')" type="button" class="btn-outline theme-primary w-100">4</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('5')" type="button" class="btn-solid theme-primary w-100">5</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('6')" type="button" class="btn-subtle theme-primary w-100">6</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('-')" type="button" class="btn-solid theme-warning w-100">−</button>
+                        </div>
+
+                        <!-- Baris 4 -->
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('1')" type="button" class="btn-outline theme-primary w-100">1</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('2')" type="button" class="btn-solid theme-primary w-100">2</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('3')" type="button" class="btn-subtle theme-primary w-100">3</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('+')" type="button" class="btn-solid theme-warning w-100">+</button>
+                        </div>
+
+                        <!-- Baris 5 -->
+                        <div class="col-6">
+                            <button onclick="tampilkannilai('0')" type="button" class="btn-solid theme-primary w-100">0</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="tampilkannilai('.')" type="button" class="btn-solid theme-accent w-100">.</button>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="operasi()" type="button" class="btn-solid theme-success w-100">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Peletakan javascript ditaruh di bagian bawah sebelum body penutup -->
+ <!-- ngambil data lewat id dan memakai javascript dengan function -->
+  <!-- tambahkan id pada layar kalkulator -->
+   <!-- const digunakan untuk sesuatu yang pasti dan tidak bergerak -->
+  <script>
+
+    // document.getElementById('layar') digunakan untuk mengambil elemen HTML dengan id 'layar', riwayat digunakan untuk mengambil elemen HTML dengan id 'riwayat'  nama variable layar dan riwayat bisa diganti sesuai keinginan, tidak harus sama dengan id yang ada di html kecuali yang di dalam kurung harus sama dengan id yang ada di html. getElementById harus huruf besar E dan B, jika kecil maka akan error
+
+    const layar = document.getElementById('layar');
+    const riwayat = document.getElementById('riwayat');
+
+    // function untuk menampilkan angka di layar kalkulator dengan memainkan value, valuenya bisa lebih dari satu angka, misal 1,2,3,4,5,6,7,8,9,0. value bisa diganti sesuai keinginan. function ini akan dipanggil di tombol angka pada kalkulator
+    function tampilkannilai(value) {
+
+        // jika value di layar kalkulator adalah 0 maka value akan diganti dengan value yang dikirimkan, jika tidak maka value akan ditambahkan dengan value yang dikirimkan
+            if (layar.value === "0" || layar.value ==="Error") {
+                layar.value = value;
+            }
+            else{
+                layar.value += value;
+            }
+            // setelah buat fungsinya, maka dipanggil di semua tombol angka pada kalkulator dengan menambahkan onclick="tampilkannilai('angka')" di setiap tombol angka
+    }
+
+    // funtion untuk tombol AC/hapus semua isi layar kalkulator dan riwayat
+    function bersihsemua() {
+        layar.value = "0";
+        riwayat.textContent = "";
+    }
+
+    // funtion untuk tombol hapus/⌫, akan menghapus satu angka terakhir di layar kalkulator
+    function hapus() {
+        if (layar.value === "Error") {
+            layar.value = "0";
+        } 
+        else {
+
+            // slice digunakan untuk memotong string, slice(0, -1) artinya memotong dari index 0 sampai index terakhir -1, jadi akan menghapus satu angka terakhir di layar kalkulator
+            layar.value = layar.value.slice(0, -1);
+
+            // jika layar kalkulator kosong setelah dihapus, maka akan menampilkan 0
+            if (layar.value === ""){
+                layar.value = "0";
+            }
+        }
+        
+    }
+
+    function operasi(){
+        try{
+            // let digunakan untuk tampung nilai dinamis, eval digunakan untuk menghitung nilai dari string yang dikirimkan, misal layar.value = "1+1" maka eval(layar.value) = 2
+            let expression = layar.value;
+            let hasil = eval(expression);
+
+            riwayat.textContent= layar.value+" = "+hasil;
+            layar.value=hasil;
+        }
+        catch(error){
+            alert("Terjadi kesalahan, Salah Woy " + error.message);
+        }
+
+            
+    }
+
+  </script>
+</body>
+</html>
